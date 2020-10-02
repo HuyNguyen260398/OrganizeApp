@@ -1,7 +1,7 @@
 ﻿@page "/signin";
 
 <div class="sign-form">
-    <p class="welcome-text">User - Today is XXX</p>
+    <p class="welcome-text">User - Today is @Day!</p>
     <input type="text" class="sign-input form-control" placeholder="Username"/>
     <input type="password" class="sign-input form-control" placeholder="Password"/>
 
@@ -13,5 +13,5 @@
 </div>
 
 @code {
-
+    private string Day { get; } = DateTime.Now.DayOfWeek.ToString();
 }
