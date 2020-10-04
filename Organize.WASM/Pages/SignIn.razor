@@ -2,7 +2,8 @@
 
 <div class="sign-form">
     <p class="welcome-text">Hello @(String.IsNullOrEmpty(Username) ? "User" : Username) - Today is @Day!</p>
-    <input type="text" class="sign-input form-control" placeholder="Username" @onchange="HandleUserNameChanged"/>
+    @*<input type="text" class="sign-input form-control" placeholder="Username" @onchange="HandleUserNameChanged"/>*@
+    <ValidationInput ValueChangedCallBack="HandleUserNameValueChanged" Value="@Username"></ValidationInput>
     <input type="password" class="sign-input form-control" placeholder="Password"/>
 
     <button class="sign-button btn btn-primary" type="submit">Sign In</button>
@@ -13,11 +14,17 @@
 </div>
 
 @code {
-    public string Username { get; set; }
+    public string Username { get; set; } = "Username";
+
     private string Day { get; } = DateTime.Now.DayOfWeek.ToString();
 
     private void HandleUserNameChanged(ChangeEventArgs eventArgs)
     {
         Username = eventArgs.Value.ToString();
+    }
+
+    private void HandleUserNameValueChanged(string value)
+    {
+        Username = value;
     }
 }

@@ -1,0 +1,15 @@
+﻿.validation-container {
+    display: flex;
+    flex-flow: row;
+}
+
+.validation-input {
+    flex: 1 1 auto;
+}
+
+.val-tooltip {
+    position: relative;
+    display: inline-block;
+    flex: 0 0 20px;
+    background: red;
+}
