@@ -24,6 +24,10 @@ namespace Organize.WASM.Controls
         [Parameter]
         public string Error { get; set; }
 
+        // Attribute splatting - add HTML attribute to razor component
+        [Parameter(CaptureUnmatchedValues = true)]
+        public Dictionary<string, object> InputAttributes { get; set; }
+
         protected async void HandleInputChanged(ChangeEventArgs eventArgs)
         {
             //await ValueChangedCallBack.InvokeAsync(eventArgs.Value.ToString());

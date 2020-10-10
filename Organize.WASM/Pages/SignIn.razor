@@ -14,23 +14,33 @@
         @*<ValidationMessage For="@(() => User.UserName)" />*@
 
         @*<InputText type="password" class="sign-input form-control" placeholder="Password" @bind-Value="User.Password"/>
-        <ValidationMessage For="@(() => User.Password)" />*@
+            <ValidationMessage For="@(() => User.Password)" />*@
 
         <!-- Using ValidationInput component -->
-
         @*<ValidationInput ValueChangedCallBack="HandleUserNameValueChanged" Value="@Username"></ValidationInput>*@
 
-        <ValidationInput @bind-Value="@User.UserName" Error="@GetError(() => User.UserName)"></ValidationInput>
-        <ValidationInput @bind-Value="@User.Password" Error="@GetError(() => User.Password)"></ValidationInput> <!-- 2 way data binding using "bind-Value"-->
+        <div class="sign-validation">
+            <ValidationInput placeholder="Username"
+                             @bind-Value="@User.UserName"
+                             Error="@GetError(() => User.UserName)"></ValidationInput>
+        </div>
+
+
+        <div class="sign-validation">
+            <ValidationInput type="password"
+                             placeholder="Password"
+                             @bind-Value="@User.Password"
+                             Error="@GetError(() => User.Password)"></ValidationInput> <!-- 2 way data binding using "bind-Value"-->
+        </div>
 
 
         @*<ValidationSummary />*@ <!-- No need if used ValidationMessage for InputText -->
 
-        <button class="sign-button btn btn-primary" type="submit">Sign In</button> 
+        <button class="sign-button btn btn-primary" type="submit">Sign In</button>
 
     </EditForm>
 
     <div class="signup">
-        <a href="\signup">Sign Up</a> 
+        <a href="\signup">Sign Up</a>
     </div>
 </div>
