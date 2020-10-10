@@ -8,16 +8,26 @@ namespace Organize.WASM.Controls
 {
     public class ValidationInputBase : ComponentBase
     {
+        //[Parameter]
+        //public EventCallback<string> ValueChangedCallBack { get; set; }
+
+        /// 2 way data bindging using @bind-property
+        /// the EventCallBack for that property must be named "propertyChanged"
+        /// and the generic type of the call back and the property must be same
+        
         [Parameter]
-        public EventCallback<string> ValueChangedCallBack { get; set; }
+        public EventCallback<string> ValueChanged { get; set; }
 
         [Parameter]
-
         public string Value { get; set; }
+
+        [Parameter]
+        public string Error { get; set; }
 
         protected async void HandleInputChanged(ChangeEventArgs eventArgs)
         {
-            await ValueChangedCallBack.InvokeAsync(eventArgs.Value.ToString());
+            //await ValueChangedCallBack.InvokeAsync(eventArgs.Value.ToString());
+            await ValueChanged.InvokeAsync(eventArgs.Value.ToString());
         }
     }
 }

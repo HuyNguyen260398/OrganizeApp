@@ -1,30 +1,36 @@
 ﻿@page "/signin";
+@inherits SignInBase;
 
 <div class="sign-form">
-    <p class="welcome-text">Hello @(String.IsNullOrEmpty(Username) ? "User" : Username) - Today is @Day!</p>
-    @*<input type="text" class="sign-input form-control" placeholder="Username" @onchange="HandleUserNameChanged"/>*@
-    <ValidationInput ValueChangedCallBack="HandleUserNameValueChanged" Value="@Username"></ValidationInput>
-    <input type="password" class="sign-input form-control" placeholder="Password"/>
+    <p class="welcome-text">Hello @(String.IsNullOrEmpty(User.UserName) ? "User" : User.UserName) - Today is @Day!</p>
 
-    <button class="sign-button btn btn-primary" type="submit">Sign In</button>
+    <EditForm EditContext="EditContext">
+
+        <DataAnnotationsValidator />
+
+        @*<input type="text" class="sign-input form-control" placeholder="Username" @onchange="HandleUserNameChanged"/>*@
+
+        @*<InputText type="text" class="sign-input form-control" placeholder="Username" @bind-Value="User.UserName" />*@ <!-- Data Binding -->
+        @*<ValidationMessage For="@(() => User.UserName)" />*@
+
+        @*<InputText type="password" class="sign-input form-control" placeholder="Password" @bind-Value="User.Password"/>
+        <ValidationMessage For="@(() => User.Password)" />*@
+
+        <!-- Using ValidationInput component -->
+
+        @*<ValidationInput ValueChangedCallBack="HandleUserNameValueChanged" Value="@Username"></ValidationInput>*@
+
+        <ValidationInput @bind-Value="@User.UserName" Error="@GetError(() => User.UserName)"></ValidationInput>
+        <ValidationInput @bind-Value="@User.Password" Error="@GetError(() => User.Password)"></ValidationInput> <!-- 2 way data binding using "bind-Value"-->
+
+
+        @*<ValidationSummary />*@ <!-- No need if used ValidationMessage for InputText -->
+
+        <button class="sign-button btn btn-primary" type="submit">Sign In</button> 
+
+    </EditForm>
 
     <div class="signup">
-        <a href="\signup">Sign Up</a>
+        <a href="\signup">Sign Up</a> 
     </div>
 </div>
-
-@code {
-    public string Username { get; set; } = "Username";
-
-    private string Day { get; } = DateTime.Now.DayOfWeek.ToString();
-
-    private void HandleUserNameChanged(ChangeEventArgs eventArgs)
-    {
-        Username = eventArgs.Value.ToString();
-    }
-
-    private void HandleUserNameValueChanged(string value)
-    {
-        Username = value;
-    }
-}
