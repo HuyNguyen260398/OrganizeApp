@@ -35,6 +35,15 @@
                              Error="@GetError(() => User.PhoneNumber)" />
         </div>
 
+        <div class="sign-validation">
+            <Dropdown
+                      TValue="GenderTypeEnum"
+                      @bind-SelectedItem="@SelectedGenderTypeDropdownItem"
+                      SelectableItems="@GenderTypeDropdownItem">
+                 
+            </Dropdown>
+        </div>
+
         <button class="sign-button btn btn-primary" type="submit">Sign Up</button>
     </EditForm> 
 </div>
