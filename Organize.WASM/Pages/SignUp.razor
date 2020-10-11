@@ -1,0 +1,34 @@
+﻿@page "/signup";
+@inherits SignUpBase;
+
+<div class="sign-form">
+    <EditForm EditContext="@EditContext">
+        <DataAnnotationsValidator />
+
+        <div class="sign-validation">
+            <ValidationInput @bind-Value="User.UserName"
+                             placeholder="Username"
+                             Error="@GetError(() => User.UserName)" />
+        </div>
+
+        <div class="sign-validation">
+            <ValidationInput @bind-Value="User.Password"
+                             placeholder="Password"
+                             Error="@GetError(() => User.Password)" />
+        </div>
+
+        <div class="sign-validation">
+            <ValidationInput @bind-Value="User.FirstName"
+                             placeholder="First Name"
+                             Error="@GetError(() => User.FirstName)" />
+        </div>
+
+        <div class="sign-validation">
+            <ValidationInput @bind-Value="User.LastName"
+                             placeholder="Last Name"
+                             Error="@GetError(() => User.LastName)" />
+        </div>
+
+        <button class="sign-button btn btn-primary" type="submit">Sign Up</button>
+    </EditForm> 
+</div>

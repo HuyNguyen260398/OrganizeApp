@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorExample", "BlazorExam
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Organize.WASM", "Organize.WASM\Organize.WASM.csproj", "{FD9651BF-DDBA-46B3-BEE7-009C235C3C87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organize.Business", "Organize.Business\Organize.Business.csproj", "{D26F9FA7-4291-4112-B34B-8F8E03B722FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Organize.Business", "Organize.Business\Organize.Business.csproj", "{D26F9FA7-4291-4112-B34B-8F8E03B722FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organize.DataAccess", "Organize.DataAccess\Organize.DataAccess.csproj", "{DC36CE9A-5CCB-437A-987C-245F36B42EAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Organize.DataAccess", "Organize.DataAccess\Organize.DataAccess.csproj", "{DC36CE9A-5CCB-437A-987C-245F36B42EAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organize.Shared", "Organize.Shared\Organize.Shared.csproj", "{B237B167-2C18-4783-BEE7-C23F7623D90F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Organize.Shared", "Organize.Shared\Organize.Shared.csproj", "{B237B167-2C18-4783-BEE7-C23F7623D90F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

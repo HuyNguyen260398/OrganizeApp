@@ -9,39 +9,39 @@ using System.Threading.Tasks;
 
 namespace Organize.WASM.Pages
 {
-    public class SignInBase : ComponentBase
+    public class SignInBase : SignBase
     {
-        protected string Username { get; set; } = "Username";
+        //protected string Username { get; set; } = "Username";
 
         protected string Day { get; } = DateTime.Now.DayOfWeek.ToString();
 
-        protected User User { get; set; } = new User();
+        //protected User User { get; set; } = new User();
 
-        protected EditContext EditContext { get; set; }
+        //protected EditContext EditContext { get; set; }
 
-        protected override void OnInitialized()
-        {
-            base.OnInitialized();
-            EditContext = new EditContext(User);
-        }
+        //protected override void OnInitialized()
+        //{
+        //    base.OnInitialized();
+        //    EditContext = new EditContext(User);
+        //}
 
-        protected void HandleUserNameChanged(ChangeEventArgs eventArgs)
-        {
-            Username = eventArgs.Value.ToString();
-        }
+        //protected void HandleUserNameChanged(ChangeEventArgs eventArgs)
+        //{
+        //    Username = eventArgs.Value.ToString();
+        //}
 
-        protected void HandleUserNameValueChanged(string value)
-        {
-            Username = value;
-        }
+        //protected void HandleUserNameValueChanged(string value)
+        //{
+        //    Username = value;
+        //}
 
-        public string GetError(Expression<Func<Object>> fu)
-        {
-            if (EditContext == null)
-            {
-                return null;
-            }
-            return EditContext.GetValidationMessages(fu).FirstOrDefault();
-        }
+        //public string GetError(Expression<Func<Object>> fu)
+        //{
+        //    if (EditContext == null)
+        //    {
+        //        return null;
+        //    }
+        //    return EditContext.GetValidationMessages(fu).FirstOrDefault();
+        //}
     }
 }
