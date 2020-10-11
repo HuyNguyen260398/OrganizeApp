@@ -29,6 +29,12 @@
                              Error="@GetError(() => User.LastName)" />
         </div>
 
+        <div class="sign-validation">
+            <ValidationInput @bind-Value="User.PhoneNumber"
+                             placeholder="Phone Number"
+                             Error="@GetError(() => User.PhoneNumber)" />
+        </div>
+
         <button class="sign-button btn btn-primary" type="submit">Sign Up</button>
     </EditForm> 
 </div>
