@@ -12,6 +12,9 @@ namespace Organize.WASM.Pages
         [Inject]
         private NavigationManager NavigationManager { get; set; }
 
+        [Parameter]
+        public string Username { get; set; }
+
         protected IList<DropdownItem<GenderTypeEnum>> GenderTypeDropdownItem { get; } = new List<DropdownItem<GenderTypeEnum>>();
 
         protected DropdownItem<GenderTypeEnum> SelectedGenderTypeDropdownItem { get; set; }
@@ -44,9 +47,12 @@ namespace Organize.WASM.Pages
 
             SelectedGenderTypeDropdownItem = female;
 
-            TryGetUsernameFromUri();
+            //TryGetUsernameFromUri();
+
+            User.UserName = Username;
         }
 
+        // passing param from different components via url
         private void TryGetUsernameFromUri()
         {
             var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);

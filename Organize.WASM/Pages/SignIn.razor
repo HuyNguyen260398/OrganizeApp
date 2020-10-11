@@ -4,7 +4,7 @@
 <div class="sign-form">
     <p class="welcome-text">Hello @(String.IsNullOrEmpty(User.UserName) ? "User" : User.UserName) - Today is @Day!</p>
 
-    <EditForm EditContext="EditContext">
+    <EditForm EditContext="EditContext" OnSubmit="OnSubmit">
 
         <DataAnnotationsValidator />
 
@@ -41,6 +41,7 @@
     </EditForm>
 
     <div class="signup">
-        <a href="@(User.UserName != null ? "/signup?userName=" + User.UserName : "/signup")">Sign Up</a>
+        @*<a href="@(User.UserName != null ? "/signup?userName=" + User.UserName : "/signup")">Sign Up</a>*@ <!-- 1st way : use query param -->
+        <a href="@(User.UserName != null ? "/signup/" + User.UserName : "/signup")">Sign Up</a> <!-- 2nd way : use route param -->
     </div>
 </div>

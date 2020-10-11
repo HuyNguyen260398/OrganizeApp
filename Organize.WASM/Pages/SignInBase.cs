@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using Organize.Business;
 using Organize.Shared.Entities;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,26 @@ namespace Organize.WASM.Pages
     {
         //protected string Username { get; set; } = "Username";
 
+        [Inject]
+        private NavigationManager NavigationManager { get; set; }
+
         protected string Day { get; } = DateTime.Now.DayOfWeek.ToString();
+
+        protected async void OnSubmit()
+        {
+            if (!EditContext.Validate())
+            {
+                return;
+            }
+
+            var userManager = new UserManager();
+            var foundUser = await userManager.TrySignInAndGetUserAsync(User);
+
+            if (foundUser != null)
+            {
+                NavigationManager.NavigateTo("items");
+            }
+        }
 
         //protected User User { get; set; } = new User();
 
