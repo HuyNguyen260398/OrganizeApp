@@ -41,6 +41,6 @@
     </EditForm>
 
     <div class="signup">
-        <a href="\signup">Sign Up</a>
+        <a href="@(User.UserName != null ? "/signup?userName=" + User.UserName : "/signup")">Sign Up</a>
     </div>
 </div>
