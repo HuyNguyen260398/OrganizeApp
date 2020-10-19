@@ -18,6 +18,7 @@
     <ProjectReference Include="..\Organize.Business\Organize.Business.csproj" />
     <ProjectReference Include="..\Organize.DataAccess\Organize.DataAccess.csproj" />
     <ProjectReference Include="..\Organize.Shared\Organize.Shared.csproj" />
+    <ProjectReference Include="..\Organize.TestFake\Organize.TestFake.csproj" />
   </ItemGroup>
 
 </Project>

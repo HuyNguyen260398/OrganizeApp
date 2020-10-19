@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Organize.Business;
+using Organize.Shared.Contracts;
 using Organize.Shared.Entities;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,24 @@ namespace Organize.WASM.Pages
         [Inject]
         private NavigationManager NavigationManager { get; set; }
 
+        [Inject]
+        private IUserManager UserManager { get; set; }
+
         protected string Day { get; } = DateTime.Now.DayOfWeek.ToString();
+
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+
+            User = new User
+            {
+                FirstName = "Huy",
+                LastName = "Nguyen",
+                PhoneNumber = "123"
+            };
+
+            EditContext = new EditContext(User);
+        }
 
         protected async void OnSubmit()
         {
@@ -26,8 +44,7 @@ namespace Organize.WASM.Pages
                 return;
             }
 
-            var userManager = new UserManager();
-            var foundUser = await userManager.TrySignInAndGetUserAsync(User);
+            var foundUser = await UserManager.TrySignInAndGetUserAsync(User);
 
             if (foundUser != null)
             {
