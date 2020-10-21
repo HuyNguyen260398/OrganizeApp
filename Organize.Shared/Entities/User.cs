@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Organize.Shared.Entities
 {
-    public class User
+    public class User : BaseEntity
     {
         [Required]
         [StringLength(10, ErrorMessage = "Username is to long!")]
@@ -23,5 +24,7 @@ namespace Organize.Shared.Entities
         [Required]
         [Phone]
         public string PhoneNumber { get; set; }
+
+        public ObservableCollection<BaseItem> UserItems { get; set; }
     }
 }

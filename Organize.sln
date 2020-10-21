@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Organize.Shared", "Organize
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeneralUI", "GeneralUI\GeneralUI.csproj", "{FA84DCBC-A859-4522-969C-5410B2C277FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organize.TestFake", "Organize.TestFake\Organize.TestFake.csproj", "{19ECBE23-B785-4188-A787-3D49A71E1742}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Organize.TestFake", "Organize.TestFake\Organize.TestFake.csproj", "{19ECBE23-B785-4188-A787-3D49A71E1742}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
