@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Organize.Shared.Enums;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
@@ -24,6 +25,8 @@ namespace Organize.Shared.Entities
         [Required]
         [Phone]
         public string PhoneNumber { get; set; }
+
+        public GenderTypeEnum GenderType { get; set; }
 
         public ObservableCollection<BaseItem> UserItems { get; set; }
     }

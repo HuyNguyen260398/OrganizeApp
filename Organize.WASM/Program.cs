@@ -27,7 +27,15 @@ namespace Organize.WASM
 
             builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
-            await builder.Build().RunAsync();
+            //await builder.Build().RunAsync();
+
+            var host = builder.Build();
+
+            var currentUserService = host.Services.GetRequiredService<ICurrentUserService>();
+            TestData.CreateTestUser();
+            currentUserService.CurrentUser = TestData.TestUser;
+            await host.RunAsync();
+
         }
     }
 }
