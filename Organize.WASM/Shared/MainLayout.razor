@@ -1,8 +1,20 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="sidebar">
-    <NavMenu />
-</div>
+<nav class="navbar navbar-light justify-content-between fixed-top">
+    <a class="navbar-brand" href="/items">
+        <img src="/images/blazor.png" width="30" height="30" class="d-inline-block align-top"/>
+        Hello @CurrentUserService.CurrentUser?.FirstName
+    </a>
+    <form class="form-inline">
+        <NavLink href="settings" ActiveClass="active-nav">
+            <button class="btn btn-outline-success my-2 my-sm-0">Settings</button>
+        </NavLink>
+        <NavLink href="about" ActiveClass="active-nav">
+            <button class="btn btn-outline-success my-2 my-sm-0">About</button>
+        </NavLink>
+        <div class="btn btn-outline-success my-2 my-sm-0" @onclick="SignOut">Sign Out</div>
+    </form>
+</nav>
 
 <div class="main">
     <div class="top-row px-4">
