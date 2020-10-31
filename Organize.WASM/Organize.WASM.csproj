@@ -12,6 +12,7 @@
   <ItemGroup>
     <_ContentIncludedByDefault Remove="compilerconfig.json" />
     <_ContentIncludedByDefault Remove="wwwroot\css\components\itemsList.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\components\ItemsOveriew.css" />
   </ItemGroup>
 
   <ItemGroup>
