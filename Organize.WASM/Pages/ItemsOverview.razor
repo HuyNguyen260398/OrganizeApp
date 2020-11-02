@@ -1,11 +1,15 @@
 ﻿@page "/items"
+@page "/items/{TypeString}/{Id:int}"
 
-    <div class="items-container">
-        <div class="items-list-container">
-            <ItemsList></ItemsList>
-        </div>
+<div class="items-container">
+    <div class="items-list-container">
+        <ItemsList></ItemsList>
+    </div>
+
+    @if (ShowEdit)
+    {
         <div class="item-edit-container">
             <ItemEdit></ItemEdit>
         </div>
-    </div>
-
+    }
+</div>
