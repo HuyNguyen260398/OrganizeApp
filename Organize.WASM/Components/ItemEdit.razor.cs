@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Organize.WASM.Components
 {
-    public partial class ItemEdit
+    public partial class ItemEdit : ComponentBase, IDisposable
     {
         //[Inject]
         //private ItemEditService ItemEditService { get; set; }
@@ -65,6 +65,11 @@ namespace Organize.WASM.Components
         private void HandleLocationChanged(object sender, LocationChangedEventArgs e)
         {
             SetDataFromUri();
+        }
+
+        public void Dispose()
+        {
+            NavigationManager.LocationChanged -= HandleLocationChanged;
         }
 
         //private void HandleEditItemChanged(object sender, ItemEditEventArgs e)
