@@ -1,5 +1,7 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 @import '_variables.scss';
+@import '_bootstrap-global.scss';
+@import '../bootstrap/scss/_buttons.scss';
 
 html, body {
     font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
@@ -76,4 +78,10 @@ html, body {
     position: absolute;
     right: 0.75rem;
     top: 0.5rem;
+}
+
+.orga-button {
+    background: $primary-color;
+    color: white;
+    @extend .btn;
 }

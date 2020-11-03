@@ -5,12 +5,13 @@ using Organize.WASM.ItemEdit;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Organize.WASM.Components
 {
-    public partial class ItemsList : ComponentBase
+    public partial class ItemsList : ComponentBase, IDisposable
     {
         [Inject]
         private ICurrentUserService CurrentUserService { get; set; }
@@ -23,12 +24,24 @@ namespace Organize.WASM.Components
         protected override void OnInitialized()
         {
             base.OnInitialized();
+
             UserItems = CurrentUserService.CurrentUser.UserItems;
+            UserItems.CollectionChanged += HandleUserItemsCollectionChanged;
+        }
+
+        private void HandleUserItemsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            StateHasChanged();
         }
 
         private void OnBackgroundClicked()
         {
             ItemEditService.EditItem = null;
+        }
+
+        public void Dispose()
+        {
+            UserItems.CollectionChanged -= HandleUserItemsCollectionChanged;
         }
     }
 }
