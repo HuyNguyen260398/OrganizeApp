@@ -30,6 +30,8 @@ namespace Organize.WASM.Pages
 
         private DropdownItem<ItemTypeEnum> SelectedDropDownType { get; set; }
 
+        private DropdownItem<ItemTypeEnum> DefaultSelected { get; set; }
+
         private IList<DropdownItem<ItemTypeEnum>> DropDownTypes { get; set; }
 
         private bool ShowEdit { get; set; }
@@ -53,6 +55,10 @@ namespace Organize.WASM.Pages
             item.ItemObject = ItemTypeEnum.Parent;
             item.DisplayText = "Parent";
             DropDownTypes.Add(item);
+
+            DefaultSelected = new DropdownItem<ItemTypeEnum>();
+            DefaultSelected.ItemObject = ItemTypeEnum.Text;
+            DefaultSelected.DisplayText = "Please select item type";
 
             //ItemEditService.EditItemChanged += HandleEditItemChanged;
         }

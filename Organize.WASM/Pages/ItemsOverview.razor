@@ -18,6 +18,7 @@
     <div class="dropdown item-add-input">
         <Dropdown TValue="ItemTypeEnum"
                   SelectableItems="DropDownTypes"
+                  SelectedItem="DefaultSelected"
                   SelectedItemChanged="@(args => SelectedDropDownType = args)" />
     </div>
     <button class="orga-button" @onclick="AddNewAsync" disabled="@(SelectedDropDownType == null)">Add</button>

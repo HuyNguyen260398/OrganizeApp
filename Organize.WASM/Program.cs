@@ -11,6 +11,7 @@ using Organize.Shared.Contracts;
 using Organize.Business;
 using Organize.TestFake;
 using Organize.WASM.ItemEdit;
+using Organize.DataAccess;
 
 namespace Organize.WASM
 {
@@ -24,8 +25,14 @@ namespace Organize.WASM
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
             //builder.Services.AddSingleton<IUserManager, UserManager>();
+
             builder.Services.AddScoped<IUserManager, UserManagerFake>();
+
             builder.Services.AddScoped<IUserItemManager, UserItemManager>();
+
+            builder.Services.AddScoped<IItemDataAccess, ItemDataAccess>();
+
+            builder.Services.AddScoped<IPersistanceService, InMemoryStorage.InMemoryStorage>();
 
             builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
@@ -35,9 +42,18 @@ namespace Organize.WASM
 
             var host = builder.Build();
 
+            var persistanceService = host.Services.GetRequiredService<IPersistanceService>();
+            await persistanceService.InitAsync();
+
             var currentUserService = host.Services.GetRequiredService<ICurrentUserService>();
-            TestData.CreateTestUser();
-            currentUserService.CurrentUser = TestData.TestUser;
+            var userItemManager = host.Services.GetRequiredService<IUserItemManager>();
+
+            if (persistanceService is InMemoryStorage.InMemoryStorage)
+            {
+                TestData.CreateTestUser(userItemManager);
+                currentUserService.CurrentUser = TestData.TestUser;
+            }
+
             await host.RunAsync();
 
         }
