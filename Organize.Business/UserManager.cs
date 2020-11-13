@@ -10,16 +10,27 @@ namespace Organize.Business
 {
     public class UserManager : IUserManager
     {
+        private readonly IUserDataAccess _userDataAccess;
+
+        public UserManager(IUserDataAccess userDataAccess)
+        {
+            _userDataAccess = userDataAccess;
+        }
+
         public async Task<User> TrySignInAndGetUserAsync(User user)
         {
-            //await Task.Delay(10000);
-            Console.WriteLine("Hi from the User Manager");
-            return await Task.FromResult(new User());
+            return await _userDataAccess.AuthenticateAndGetUserAsync(user);
         }
 
         public async Task InserUserAsync(User user)
         {
-            await Task.FromResult(true);
+            var isUserAlreadyAvailable = await _userDataAccess.IsUserWithNameAvailableAsync(user);
+            if (isUserAlreadyAvailable)
+            {
+                throw new Exception("User name already exists");
+            }
+
+            await _userDataAccess.InsertUserAsync(user);
         }
     }
 }

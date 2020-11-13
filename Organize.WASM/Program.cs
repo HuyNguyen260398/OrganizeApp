@@ -24,15 +24,19 @@ namespace Organize.WASM
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-            //builder.Services.AddSingleton<IUserManager, UserManager>();
+            builder.Services.AddScoped<IUserManager, UserManager>();
 
-            builder.Services.AddScoped<IUserManager, UserManagerFake>();
+            //.Services.AddScoped<IUserManager, UserManagerFake>();
 
             builder.Services.AddScoped<IUserItemManager, UserItemManager>();
 
             builder.Services.AddScoped<IItemDataAccess, ItemDataAccess>();
 
+            builder.Services.AddScoped<IUserDataAccess, UserDataAccess>();
+
             builder.Services.AddScoped<IPersistanceService, InMemoryStorage.InMemoryStorage>();
+
+            builder.Services.AddScoped<IPersistanceService, IndexedDB.IndexedDB>();
 
             builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 

@@ -21,6 +21,9 @@ namespace Organize.WASM.Pages
         [Inject]
         private IUserManager UserManager { get; set; }
 
+        [Inject]
+        private ICurrentUserService CurrentUserService {get; set; }
+
         protected string Day { get; } = DateTime.Now.DayOfWeek.ToString();
 
         protected override void OnInitialized()
@@ -48,6 +51,7 @@ namespace Organize.WASM.Pages
 
             if (foundUser != null)
             {
+                CurrentUserService.CurrentUser = foundUser;
                 NavigationManager.NavigateTo("items");
             }
         }
