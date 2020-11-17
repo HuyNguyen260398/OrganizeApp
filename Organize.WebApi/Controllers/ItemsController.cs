@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Organize.Shared.Enitites;
+using Organize.Shared.Entities;
 using Organize.Shared.Enums;
 using Organize.TestFake;
 using JsonSerializer = System.Text.Json.JsonSerializer;

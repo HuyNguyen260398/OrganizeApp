@@ -30,6 +30,8 @@ namespace Organize.Shared.Entities
 
         public ObservableCollection<BaseItem> UserItems { get; set; }
 
+        public string Token { get; set; }
+
         public override string ToString()
         {
             var salutation = string.Empty;
