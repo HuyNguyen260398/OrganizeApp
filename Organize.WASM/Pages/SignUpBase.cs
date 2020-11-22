@@ -84,6 +84,7 @@ namespace Organize.WASM.Pages
             try
             {
                 BusyOverlayService.SetBusyState(BusyEnum.Busy);
+                User.GenderType = SelectedGenderTypeDropdownItem.ItemObject;
                 await UserManager.InserUserAsync(User);
                 NavigationManager.NavigateTo("signin");
             }

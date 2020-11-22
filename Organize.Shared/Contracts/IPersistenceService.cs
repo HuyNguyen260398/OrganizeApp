@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Organize.Shared.Contracts
 {
-    public interface IPersistanceService
+    public interface IPersistenceService
     {
         Task<IEnumerable<T>> GetAsync<T>(Expression<Func<T, bool>> whereExpression) where T : BaseEntity;
         Task<int> InsertAsync<T>(T entity) where T : BaseEntity;

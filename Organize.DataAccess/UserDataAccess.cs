@@ -10,26 +10,26 @@ namespace Organize.DataAccess
 {
     public class UserDataAccess : IUserDataAccess
     {
-        private IPersistanceService _persistanceService;
-        public UserDataAccess(IPersistanceService persistanceService)
+        private IPersistenceService _persistenceService;
+        public UserDataAccess(IPersistenceService persistenceService)
         {
-            _persistanceService = persistanceService;
+            _persistenceService = persistenceService;
         }
 
         public async Task<bool> IsUserWithNameAvailableAsync(User user)
         {
-            var users = await _persistanceService.GetAsync<User>(u => u.UserName == user.UserName);
+            var users = await _persistenceService.GetAsync<User>(u => u.UserName == user.UserName);
             return users.FirstOrDefault() != null;
         }
 
         public async Task InsertUserAsync(User user)
         {
-            await _persistanceService.InsertAsync(user);
+            await _persistenceService.InsertAsync(user);
         }
 
         public async Task<User> AuthenticateAndGetUserAsync(User user)
         {
-            var users = await _persistanceService.GetAsync<User>(u => u.UserName == user.UserName && u.Password == user.Password);
+            var users = await _persistenceService.GetAsync<User>(u => u.UserName == user.UserName && u.Password == user.Password);
             return users.FirstOrDefault();
         }
     }

@@ -11,9 +11,9 @@ namespace Organize.WebAPIAccess
     {
         private WebAPIAccess _webAPIAccess;
 
-        public WebAPIUserDataAccess(IPersistanceService persistanceService)
+        public WebAPIUserDataAccess(IPersistenceService persistenceService)
         {
-            _webAPIAccess = (WebAPIAccess)persistanceService;
+            _webAPIAccess = (WebAPIAccess)persistenceService;
         }
 
         public async Task<User> AuthenticateAndGetUserAsync(User user)

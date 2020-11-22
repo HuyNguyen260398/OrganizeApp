@@ -22,7 +22,7 @@ namespace Organize.WASM
 {
     public class Program
     {
-        private static bool _isApiPersistance = true;
+        private static bool _isApipersistence = false;
 
         public static async Task Main(string[] args)
         {
@@ -39,11 +39,11 @@ namespace Organize.WASM
 
             builder.Services.AddScoped<BusyOverlayService>();
 
-            if (_isApiPersistance)
+            if (_isApipersistence)
             {
                 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration["apiAddress"]) });
 
-                builder.Services.AddScoped<IPersistanceService, WebAPIAccess.WebAPIAccess>();
+                builder.Services.AddScoped<IPersistenceService, WebAPIAccess.WebAPIAccess>();
 
                 builder.Services.AddScoped<IUserDataAccess, WebAPIAccess.WebAPIUserDataAccess>();
 
@@ -57,9 +57,9 @@ namespace Organize.WASM
             }
             else
             {
-                builder.Services.AddScoped<IPersistanceService, InMemoryStorage.InMemoryStorage>();
+                builder.Services.AddScoped<IPersistenceService, InMemoryStorage.InMemoryStorage>();
 
-                //builder.Services.AddScoped<IPersistanceService, IndexedDB.IndexedDB>();
+                //builder.Services.AddScoped<IpersistenceService, IndexedDB.IndexedDB>();
 
                 builder.Services.AddScoped<IUserDataAccess, UserDataAccess>();
 
@@ -88,14 +88,14 @@ namespace Organize.WASM
 
             var host = builder.Build();
 
-            var persistanceService = host.Services.GetRequiredService<IPersistanceService>();
-            await persistanceService.InitAsync();
+            var persistenceService = host.Services.GetRequiredService<IPersistenceService>();
+            await persistenceService.InitAsync();
 
             var currentUserService = host.Services.GetRequiredService<ICurrentUserService>();
             var userItemManager = host.Services.GetRequiredService<IUserItemManager>();
             var userManager = host.Services.GetRequiredService<IUserManager>();
 
-            if (persistanceService is InMemoryStorage.InMemoryStorage)
+            if (persistenceService is InMemoryStorage.InMemoryStorage)
             {
                 TestData.CreateTestUser(userItemManager, userManager);
                 currentUserService.CurrentUser = TestData.TestUser;

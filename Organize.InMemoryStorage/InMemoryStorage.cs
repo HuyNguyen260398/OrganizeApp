@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Organize.InMemoryStorage
 {
-    public class InMemoryStorage : IPersistanceService
+    public class InMemoryStorage : IPersistenceService
     {
         private readonly Dictionary<Type, List<BaseEntity>> _entityDictionary = new Dictionary<Type, List<BaseEntity>>();
 

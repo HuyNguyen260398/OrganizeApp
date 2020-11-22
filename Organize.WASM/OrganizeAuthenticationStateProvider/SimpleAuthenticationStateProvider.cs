@@ -28,7 +28,8 @@ namespace Organize.WASM.OrganizeAuthenticationStateProvider
             var authenticateduser = new ClaimsPrincipal(
                 new ClaimsIdentity(new[]
                 {
-                    new Claim("id", _currentUserService.CurrentUser.Id.ToString())
+                    new Claim("id", _currentUserService.CurrentUser.Id.ToString()),
+                    new Claim(ClaimTypes.Role, "admin")
                 }, "apiauth"));
             return Task.FromResult(new AuthenticationState(authenticateduser));
         }
@@ -36,7 +37,10 @@ namespace Organize.WASM.OrganizeAuthenticationStateProvider
         public void SetAuthenticatedState(User user)
         {
             var authenticatedUser = new ClaimsPrincipal(
-                new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }, "apiauth"));
+                new ClaimsIdentity(new[] { 
+                    new Claim("id", user.Id.ToString()),
+                    new Claim(ClaimTypes.Role, "admin")
+                }, "apiauth"));
             var authState = Task.FromResult(new AuthenticationState(authenticatedUser));
             NotifyAuthenticationStateChanged(authState);
         }

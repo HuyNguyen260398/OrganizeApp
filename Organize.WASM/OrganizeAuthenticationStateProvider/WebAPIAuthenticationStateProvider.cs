@@ -24,12 +24,12 @@ namespace Organize.WASM.OrganizeAuthenticationStateProvider
             ILocalStorageService localStorageService,
             ICurrentUserService currentUserService,
             HttpClient httpClient,
-            IPersistanceService persistanceService)
+            IPersistenceService persistenceService)
         {
             _localStorageService = localStorageService;
             _currentUserService = currentUserService;
             _httpClient = httpClient;
-            _webAPIAccess = (WebAPIAccess.WebAPIAccess)persistanceService;
+            _webAPIAccess = (WebAPIAccess.WebAPIAccess)persistenceService;
         }
 
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()

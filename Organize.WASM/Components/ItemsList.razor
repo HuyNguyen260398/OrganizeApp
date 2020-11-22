@@ -38,33 +38,35 @@
                     </CascadingValue>
                     break;
                 case ParentItem parentItem:
-                    <CascadingValue Value="@("tertiary")">
-                        <ItemElement TItem="Organize.Shared.Entities.BaseItem"
-                                     Item="@item">
-                            <MainFragment>
-                                <div class="item-main-container">
-                                    <div class="content-text-top">@parentItem.Title</div>
-                                    <div class="content-text-bottom">Children Count: @parentItem.ChildItems.Count</div>
-                                    <div class="content-text-bottom">Done: @parentItem.ChildItems.Count(i => i.IsDone)</div>
-                                </div>
-                            </MainFragment>
-                            <DetailFragment>
-                                @foreach (var childrenItem in parentItem.ChildItems)
-                                {
-                                    <div class="extended-child">
-                                        <div class="check-container">
-                                            <div class="checkbox">
-                                                <ItemCheckBox Item="childrenItem"></ItemCheckBox>
+                    <ObservableCollectionObserver TProp="ChildItem" Collection="parentItem.ChildItems" ObservedChildren="true">
+                        <CascadingValue Value="@("tertiary")">
+                            <ItemElement TItem="Organize.Shared.Entities.BaseItem"
+                                         Item="@item">
+                                <MainFragment>
+                                    <div class="item-main-container">
+                                        <div class="content-text-top">@parentItem.Title</div>
+                                        <div class="content-text-bottom">Children Count: @parentItem.ChildItems.Count</div>
+                                        <div class="content-text-bottom">Done: @parentItem.ChildItems.Count(i => i.IsDone)</div>
+                                    </div>
+                                </MainFragment>
+                                <DetailFragment>
+                                    @foreach (var childrenItem in parentItem.ChildItems)
+                                    {
+                                        <div class="extended-child">
+                                            <div class="check-container">
+                                                <div class="checkbox">
+                                                    <ItemCheckBox Item="childrenItem"></ItemCheckBox>
+                                                </div>
+                                            </div>
+                                            <div class="content-container">
+                                                <p class="child-title">@childrenItem.Title</p>
                                             </div>
                                         </div>
-                                        <div class="content-container">
-                                            <p class="child-title">@childrenItem.Title</p>
-                                        </div>
-                                    </div>
-                                }
-                            </DetailFragment>
-                        </ItemElement>
-                    </CascadingValue>
+                                    }
+                                </DetailFragment>
+                            </ItemElement>
+                        </CascadingValue>
+                    </ObservableCollectionObserver>
                     break;
             }
         }

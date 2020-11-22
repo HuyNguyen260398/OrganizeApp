@@ -1,4 +1,5 @@
 ﻿@page "/signin"
+@page "/"
 @inherits SignInBase
 @layout UnAuthLayout
 
@@ -28,16 +29,18 @@
 
 
         <div class="sign-validation">
-            <ValidationInput type="password"
+            <ValidationInput type="@(ShowPassword ? "text" : "password" )"
                              placeholder="Password"
                              @bind-Value="@User.Password"
                              Error="@GetError(() => User.Password)"></ValidationInput> <!-- 2 way data binding using "bind-Value"-->
+            <br />
+            <input type="checkbox" @bind="ShowPassword" />&nbsp; Show password
         </div>
 
 
         @*<ValidationSummary />*@ <!-- No need if used ValidationMessage for InputText -->
 
-        <button class="sign-button btn btn-primary" type="submit">Sign In</button> 
+        <button class="sign-button btn btn-primary" type="submit">Sign In</button>
 
     </EditForm>
 

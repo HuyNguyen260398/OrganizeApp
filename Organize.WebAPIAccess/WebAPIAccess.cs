@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Organize.WebAPIAccess
 {
-    public class WebAPIAccess : IPersistanceService
+    public class WebAPIAccess : IPersistenceService
     {
         private readonly HttpClient _httpClient;
 

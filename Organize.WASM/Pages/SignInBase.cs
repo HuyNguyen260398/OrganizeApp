@@ -40,6 +40,8 @@ namespace Organize.WASM.Pages
 
         protected string Day { get; } = DateTime.Now.DayOfWeek.ToString();
 
+        public bool ShowPassword { get; set; }
+
         protected override void OnInitialized()
         {
             base.OnInitialized();

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Organize.IndexedDB
 {
-    public class IndexedDB : IPersistanceService
+    public class IndexedDB : IPersistenceService
     {
         private readonly IJSRuntime _jsRuntime;
         private readonly JsonSerializerSettings _settings;

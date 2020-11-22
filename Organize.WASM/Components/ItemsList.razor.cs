@@ -18,6 +18,9 @@ namespace Organize.WASM.Components
         private ICurrentUserService CurrentUserService { get; set; }
 
         [Inject]
+        private NavigationManager NavigationManager{ get; set; }
+
+        [Inject]
         private IUserItemManager userItemManager { get; set; }
 
         [Inject]
@@ -54,7 +57,8 @@ namespace Organize.WASM.Components
 
         private void OnBackgroundClicked()
         {
-            ItemEditService.EditItem = null;
+            //ItemEditService.EditItem = null;
+            NavigationManager.NavigateTo("/items");
         }
 
         public void Dispose()
