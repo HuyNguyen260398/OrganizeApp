@@ -1,0 +1,10 @@
+﻿@inherits BusyOverlayBase
+
+@if (IsBusy)
+{
+    <div class="busy-overlay">
+        <div>
+            @ChildContent
+        </div>
+    </div>
+}

@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Organize.IndexedDB", "Organ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Organize.WebApi", "Organize.WebApi\Organize.WebApi.csproj", "{FF6F1F71-9419-4FF2-98C2-DBDF116A9BDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organize.WebAPIAccess", "Organize.WebAPIAccess\Organize.WebAPIAccess.csproj", "{9EFE7D10-7B14-4B8D-9C3A-9737D0ACE241}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Organize.WebAPIAccess", "Organize.WebAPIAccess\Organize.WebAPIAccess.csproj", "{9EFE7D10-7B14-4B8D-9C3A-9737D0ACE241}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

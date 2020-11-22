@@ -1,9 +1,15 @@
-﻿using GeneralUI.DropdownControl;
+﻿using Blazored.Modal;
+using Blazored.Modal.Services;
+using GeneralUI.BusyOverlay;
+using GeneralUI.DropdownControl;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Primitives;
 using Organize.Shared.Contracts;
 using Organize.Shared.Enums;
+using Organize.WASM.Components;
+using Organize.WASM.OrganizeAuthenticationStateProvider;
+using System;
 using System.Collections.Generic;
 
 namespace Organize.WASM.Pages
@@ -12,6 +18,12 @@ namespace Organize.WASM.Pages
     {
         [Inject]
         private NavigationManager NavigationManager { get; set; }
+
+        [Inject]
+        private BusyOverlayService BusyOverlayService { get; set; }
+
+        [Inject]
+        private IModalService ModalService { get; set; }
 
         [Inject]
         private IUserManager UserManager { get; set; }
@@ -69,8 +81,22 @@ namespace Organize.WASM.Pages
 
         protected async void OnValidSubmit()
         {
-            await UserManager.InserUserAsync(User);
-            NavigationManager.NavigateTo("signin");
+            try
+            {
+                BusyOverlayService.SetBusyState(BusyEnum.Busy);
+                await UserManager.InserUserAsync(User);
+                NavigationManager.NavigateTo("signin");
+            }
+            catch (Exception e)
+            {
+                var parameters = new ModalParameters();
+                parameters.Add(nameof(ModalMessage.Message), e.Message);
+                ModalService.Show<ModalMessage>("Error", parameters);
+            }
+            finally
+            {
+                BusyOverlayService.SetBusyState(BusyEnum.NotBusy);
+            }
         }
     }
 }

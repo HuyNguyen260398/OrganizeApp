@@ -1,6 +1,7 @@
-﻿@page "/signup";
-@page "/signup/{Username}";
-@inherits SignUpBase;
+﻿@page "/signup"
+@page "/signup/{Username}"
+@inherits SignUpBase
+@layout UnAuthLayout
 
 <div class="sign-form">
     <EditForm EditContext="@EditContext" OnValidSubmit="OnValidSubmit">
